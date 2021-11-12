@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2021-11-11T14:14:44Z</date>
+    <date>2021-11-12T15:45:19Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -135,7 +135,9 @@ discharging(3)</description>
                             <name>Battery</name>
                         </application>
                     </applications>
-                    <valuemap/>
+                    <valuemap>
+                        <name>Delta UPS Battery Charge Status</name>
+                    </valuemap>
                     <logtimefmt/>
                     <preprocessing/>
                     <jmx_endpoint/>
@@ -246,14 +248,19 @@ discharging(3)</description>
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <description/>
+                    <description>The indication of the capacity remaining in the UPS system's batteries when AC normal.&#13;
+good(0)&#13;
+weak(1)&#13;
+replace(2)</description>
                     <inventory_link>0</inventory_link>
                     <applications>
                         <application>
                             <name>Battery</name>
                         </application>
                     </applications>
-                    <valuemap/>
+                    <valuemap>
+                        <name>Delta UPS Battery Condition</name>
+                    </valuemap>
                     <logtimefmt/>
                     <preprocessing/>
                     <jmx_endpoint/>
@@ -936,7 +943,9 @@ on_eco(8)</description>
                             <name>Output</name>
                         </application>
                     </applications>
-                    <valuemap/>
+                    <valuemap>
+                        <name>Delta UPS Output Source</name>
+                    </valuemap>
                     <logtimefmt/>
                     <preprocessing/>
                     <jmx_endpoint/>
@@ -1200,4 +1209,85 @@ Preprocessed.</description>
             <tags/>
         </trigger>
     </triggers>
+    <value_maps>
+        <value_map>
+            <name>Delta UPS Battery Charge Status</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>floating</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>charging</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>resting</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>discharging</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Delta UPS Battery Condition</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>good</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>weak</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>replace</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Delta UPS Output Source</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>normal</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>battery</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>bypass</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>reducing</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>boosting</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>manualBypass</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>other</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>none</newvalue>
+                </mapping>
+                <mapping>
+                    <value>8</value>
+                    <newvalue>on_eco</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
 </zabbix_export>
